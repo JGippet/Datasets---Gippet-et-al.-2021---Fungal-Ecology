@@ -327,21 +327,6 @@ testplot5 <- effects5$ax2 +
                aes(x = (ax2), y = prevalence, size = log(workers_see) ) )
 testplot5
 
-head(dataLocal3)
-r1 <- as.data.frame(residuals(glm1))
-colnames(r1) <- 'residuals'
-
-dgeo <- as.matrix(dist(dataLocal3[,10:11]))
-lw1 <- mat2listw(dgeo, style="W")
-
-sar1 <- lagsarlm(residuals ~ 1, data=r1,
-                 lw1, type="Durbin", method="eigen", quiet=FALSE)
-summary(sar1)
-
-sar2 <- errorsarlm(residuals ~ 1, data=r1,
-                   lw1, quiet=FALSE, method="eigen")
-summary(sar2)
-
 ###############################################################################################
 ###############################################################################################
 
